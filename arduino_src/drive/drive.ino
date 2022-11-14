@@ -1,7 +1,9 @@
 #include <Stepper.h> 
-#define STEPS 200
+#include "constants.h"
 
-Stepper stepper(STEPS, 8, 9); // Pin 2 connected to DIRECTION & Pin 3 connected to STEP Pin of Driver
+#define steps 200
+
+Stepper stepper(steps, 8, 9); // Pin 2 connected to DIRECTION & Pin 3 connected to STEP Pin of Driver
 
 #define motorInterfaceType 1
 
