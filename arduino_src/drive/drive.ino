@@ -7,7 +7,7 @@ using namespace communication;
 
 void setup() {
     Serial.begin(baud_rate);
-    initialize_motors();
+//    initialize_motors();
 }
 
 void loop() {
