@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 import cv2
+import requests
 from datetime import datetime
 
 global imgList, steeringList
@@ -9,7 +10,10 @@ count = 0
 imgList = []
 steeringList = []
 
-#GET CURRENT DIRECTORY PATH
+# NEED TO ADJUST IP ADDRESS LATER
+url = "http://10.250.242.59:5000/uploadImage"
+
+# GET CURRENT DIRECTORY PATH
 myDirectory = os.path.join(os.getcwd(), 'DataCollected')
 
 # CREATE A NEW FOLDER BASED ON THE PREVIOUS FOLDER COUNT
@@ -28,6 +32,10 @@ def saveData(img,steering):
     cv2.imwrite(fileName, img)
     imgList.append(fileName)
     steeringList.append(steering)
+
+    # SEND IMAGE TO SERVER FOR TRAINING
+    files ={'image':open(fileName,'rb')}
+    r = requests.post(url,files=files)
 
 # SAVE LOG FILE WHEN THE SESSION ENDS
 def saveLog():
