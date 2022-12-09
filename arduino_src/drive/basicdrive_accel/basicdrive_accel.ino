@@ -13,10 +13,10 @@ const int motor_interface_type = 1;
 int motion_increment = 200;
 const int n_motors = 4;
 int pos_array[n_motors] = {
-  1000, 
-  1000, 
-  1000, 
-  1000
+  200, 
+  -200, 
+  -200, 
+  200
 };
 
 AccelStepper motor_1(motor_interface_type, step_1, dir_1);
@@ -45,7 +45,7 @@ void loop() {
   int current_pos4 = motor_4.currentPosition();
   
   for(int stepper_n=0; stepper_n <  n_motors; stepper_n++){
-    steppers[stepper_n]->moveTo(pos_array[stepper_n]);
+    steppers[stepper_n]->move(pos_array[stepper_n]);
     }
   for(int stepper_n=0; stepper_n <  n_motors; stepper_n++){
     steppers[stepper_n]->run();
