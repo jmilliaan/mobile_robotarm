@@ -10,5 +10,5 @@ bus = SMBus(1)
 
 if __name__ == "__main__":
     while True:
-        bus.write(addr, 0x1)
+        bus.write_byte(addr, 0x1)
         sleep(1)
