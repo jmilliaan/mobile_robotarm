@@ -1,5 +1,6 @@
 # from DataCollection.JoystickModule import getJS
-from .DataCollection.JoystickModule import getJS
+# from .DataCollection.JoystickModule import getJS
+from DataCollection import JoystickModule
 from smbus import SMBus
 import serial
 from time import sleep
@@ -11,7 +12,7 @@ def labelencode_joystick(axis_data):
 
 
 if __name__ == "__main__":
-    data = getJS('')
+    data = JoystickModule.getJS('')
     axis = [data["axis1"], data["axis2"], data["axis3"], data["axis4"]]
     while True:
         print(axis)
