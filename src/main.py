@@ -1,4 +1,5 @@
-from DataCollection.JoystickModule import getJS
+# from DataCollection.JoystickModule import getJS
+from .DataCollection.JoystickModule import getJS
 from smbus import SMBus
 import serial
 from time import sleep
