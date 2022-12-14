@@ -12,10 +12,7 @@ def labelencode_joystick(axis_data):
     # left -> axis1 = -0.83 -> 3
     # reverse -> axis2 = 0.83 -> 4
 
-    
-
-    ax1 = axis_data[0]
-    ax2 = axis_data[1]
+    ax1, ax2 = axis_data[0], axis_data[1]
 
     if abs(ax1) > abs(ax2):
         if ax1 < 0:
@@ -36,6 +33,7 @@ if __name__ == "__main__":
     while True:
         data = getJS('')
         axis = [data["axis1"], data["axis2"]]
-        print(axis, labelencode_joystick(axis))
-        bus.write_byte(addr, 0x1)
+        motion_label = labelencode_joystick(axis)
+        print(axis, motion_label)
+        bus.write_byte(addr, bytes(motion_label))
         sleep(0.5)
