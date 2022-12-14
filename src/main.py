@@ -9,7 +9,7 @@ if __name__ == "__main__":
         data = getJS('')
         axis = [data["axis1"], data["axis2"], data["axis3"], data["axis4"]]
         axis_str = f"{data['axis1']} {data['axis2']} {data['axis3']} {data['axis4']}"
-        com.write("test")
+        # com.write("test")
         print(i + 1)
         print(axis)
 
