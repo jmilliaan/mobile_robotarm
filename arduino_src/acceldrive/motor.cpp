@@ -1,8 +1,10 @@
 #include "Arduino.h"
 #include "motor.h"
-#include "Stepper.h"
+#include "AccelStepper.h"
 #include "constants.h"
 using namespace motor;
+
+
 // Motor 1 -> Front Left. Numbering follows a clockwise pattern. 
 
 Stepper motor_1(motor_steps, dir_1, step_1);

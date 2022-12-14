@@ -39,7 +39,7 @@ def main():
     # print(getJS()) # To get all values
     # sleep(0.05)
     print(getJS(''))  # To get a single value
-    sleep(0.05)
+    sleep(0.5)
 
 
 if __name__ == '__main__':
