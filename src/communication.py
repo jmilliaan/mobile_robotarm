@@ -31,7 +31,7 @@ class Communication:
         
     def write(self, message):
         self.reset()
-        self.ser.write(bytes(message))
+        self.ser.write(message.encode())
         self.reset()
 
     def read(self):
