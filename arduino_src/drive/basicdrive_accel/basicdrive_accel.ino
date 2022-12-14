@@ -1,4 +1,8 @@
 #include <AccelStepper.h>
+#include <Wire.h>
+
+#define slave_address 0x08
+byte data_to_echo = 0;
 
 const int dir_1 = 4;
 const int step_1 = 5;
@@ -32,28 +36,45 @@ AccelStepper* steppers[n_motors] = {
 };
 void setup() {
   Serial.begin(115200);
+  Wire.begin(slave_address);
+  Wire.onReceive(receiveData);
+  Wire.onRequest(sendData);
   for(int stepper_n=0; stepper_n < n_motors; stepper_n++){
     steppers[stepper_n]->setMaxSpeed(2000);
     steppers[stepper_n]->setAcceleration(400);
     }
 }
 
+void receiveData(int bytecount)
+{
+  for (int i = 0; i < bytecount; i++) {
+    data_to_echo = Wire.read();
+  }
+}
+
+void sendData()
+{
+  Wire.write(data_to_echo);
+}
+
 void loop() {
-  int current_pos1 = motor_1.currentPosition();
-  int current_pos2 = motor_2.currentPosition();
-  int current_pos3 = motor_3.currentPosition();
-  int current_pos4 = motor_4.currentPosition();
   
-  for(int stepper_n=0; stepper_n <  n_motors; stepper_n++){
-    steppers[stepper_n]->move(pos_array[stepper_n]);
-    }
-  for(int stepper_n=0; stepper_n <  n_motors; stepper_n++){
-    steppers[stepper_n]->run();
-    }
-  Serial.print(current_pos1); Serial.print(" ");
-  Serial.print(current_pos2); Serial.print(" ");
-  Serial.print(current_pos3); Serial.print(" ");
-  Serial.print(current_pos4); Serial.println(" ");
+
+  // int current_pos1 = motor_1.currentPosition();
+  // int current_pos2 = motor_2.currentPosition();
+  // int current_pos3 = motor_3.currentPosition();
+  // int current_pos4 = motor_4.currentPosition();
+  
+  // for(int stepper_n=0; stepper_n <  n_motors; stepper_n++){
+  //   steppers[stepper_n]->move(pos_array[stepper_n]);
+  //   }
+  // for(int stepper_n=0; stepper_n <  n_motors; stepper_n++){
+  //   steppers[stepper_n]->run();
+  //   }
+  // Serial.print(current_pos1); Serial.print(" ");
+  // Serial.print(current_pos2); Serial.print(" ");
+  // Serial.print(current_pos3); Serial.print(" ");
+  // Serial.print(current_pos4); Serial.println(" ");
   
 //  delay(100);
 }

@@ -1,21 +1,14 @@
 # from communication import Communication
 # from vision import ComputerVision
 # from tools import statistics, calculate # random functions
-from DataCollection.JoystickModule import getJS
+# from DataCollection.JoystickModule import getJS
+from smbus import SMBus
 import serial
 from time import sleep
-if __name__ == "__main__":
-    # com = Communication(port="/dev/ttyACM0", baud_rate=115200, timeout=1)
-    # print(com.ser.name)
-    ser = serial.Serial('/dev/ttyACM0', serial.EIGHTBITS, serial.PARITY_NONE, serial.STOPBITS_ONE)
-    print(ser.name)
-    for i in range(100):
-        data = getJS('')
-        axis = [data["axis1"], data["axis2"], data["axis3"], data["axis4"]]
-        axis_str = f"{data['axis1']} {data['axis2']} {data['axis3']} {data['axis4']}"
-        # com.write("test")
-        print(i + 1)
-        print(axis)
+addr = 0x08
+bus = SMBus(1)
 
-        sleep(0.5)
-    
+if __name__ == "__main__":
+    while True:
+        bus.write(addr, 0x1)
+        sleep(1)
