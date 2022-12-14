@@ -1,9 +1,8 @@
-# from DataCollection.JoystickModule import getJS
-# from .DataCollection.JoystickModule import getJS
-from DataCollection import JoystickModule
+
 from smbus import SMBus
-import serial
 from time import sleep
+from DataCollection.JoystickModule import getJS
+
 addr = 0x08
 bus = SMBus(1)
 
