@@ -81,10 +81,10 @@ void receiveData(int bytecount)
 void loop() {
   
 
-  int current_pos1 = motor_1.currentPosition();
-  int current_pos2 = motor_2.currentPosition();
-  int current_pos3 = motor_3.currentPosition();
-  int current_pos4 = motor_4.currentPosition();
+  // int current_pos1 = motor_1.currentPosition();
+  // int current_pos2 = motor_2.currentPosition();
+  // int current_pos3 = motor_3.currentPosition();
+  // int current_pos4 = motor_4.currentPosition();
   
   // for(int stepper_n=0; stepper_n <  n_motors; stepper_n++){
   //   steppers[stepper_n]->move(pos_array_forward[stepper_n]);
