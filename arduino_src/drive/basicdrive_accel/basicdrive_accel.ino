@@ -71,5 +71,5 @@ void loop() {
   // Serial.print(current_pos3); Serial.print(" ");
   // Serial.print(current_pos4); Serial.println(" ");
   
-//  delay(100);
+ delay(100);
 }

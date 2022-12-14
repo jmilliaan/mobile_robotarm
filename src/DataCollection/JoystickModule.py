@@ -1,5 +1,5 @@
 import pygame
-from time import sleep
+# from time import sleep
 
 pygame.init()
 controller = pygame.joystick.Joystick(0)
@@ -35,13 +35,13 @@ def getJS(name=''):
         return buttons[name]
 
 
-def main():
-    # print(getJS()) # To get all values
-    # sleep(0.05)
-    print(getJS(''))  # To get a single value
-    sleep(0.5)
+# def main():
+#     # print(getJS()) # To get all values
+#     # sleep(0.05)
+#     print(getJS(''))  # To get a single value
+#     sleep(0.5)
 
 
-if __name__ == '__main__':
-    while True:
-        main()
+# if __name__ == '__main__':
+#     while True:
+#         main()
