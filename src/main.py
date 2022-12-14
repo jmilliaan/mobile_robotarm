@@ -35,5 +35,5 @@ if __name__ == "__main__":
         axis = [data["axis1"], data["axis2"]]
         motion_label = labelencode_joystick(axis)
         print(axis, motion_label)
-        bus.write_byte(addr, hex(motion_label))
+        bus.write_byte(addr, motion_label)
         sleep(0.5)
