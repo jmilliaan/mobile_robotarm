@@ -38,7 +38,6 @@ void setup() {
   Serial.begin(115200);
   Wire.begin(slave_address);
   Wire.onReceive(receiveData);
-  Wire.onRequest(sendData);
   for(int stepper_n=0; stepper_n < n_motors; stepper_n++){
     steppers[stepper_n]->setMaxSpeed(2000);
     steppers[stepper_n]->setAcceleration(400);
@@ -49,12 +48,8 @@ void receiveData(int bytecount)
 {
   for (int i = 0; i < bytecount; i++) {
     data_to_echo = Wire.read();
+    Serial.println(data_to_echo);
   }
-}
-
-void sendData()
-{
-  Wire.write(data_to_echo);
 }
 
 void loop() {
