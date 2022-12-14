@@ -4,6 +4,8 @@ from communication import Communication
 from DataCollection.JoystickModule import getJS
 
 if __name__ == "__main__":
-    data = getJS('')
+    for i in range(3):
+        data = getJS('')
+        print(data)
     # com = Communication(port="/dev/ttyACM0")
     # com.write()
