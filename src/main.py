@@ -11,7 +11,7 @@ def labelencode_joystick(axis_data):
     # right -> axis1 = 0.88 -> 2
     # left -> axis1 = -0.83 -> 3
     # reverse -> axis2 = 0.83 -> 4
-    
+
     if sum(axis_data) == 0:
         return 0
 
@@ -23,7 +23,7 @@ def labelencode_joystick(axis_data):
             return 3
         elif ax1 > 0:
             return 2
-    elif abs(ax2) < abs(ax1):
+    if abs(ax2) < abs(ax1):
         if ax2 > 0:
             return 4
         elif ax2 < 0:
