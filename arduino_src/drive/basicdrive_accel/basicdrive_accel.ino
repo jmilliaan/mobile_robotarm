@@ -18,9 +18,9 @@ int motion_increment = 200;
 const int n_motors = 4;
 int pos_array[n_motors] = {
   200, 
-  -200, 
-  -200, 
-  200
+  0, 
+  0, 
+  0
 };
 
 AccelStepper motor_1(motor_interface_type, step_1, dir_1);
@@ -36,21 +36,21 @@ AccelStepper* steppers[n_motors] = {
 };
 void setup() {
   Serial.begin(115200);
-  Wire.begin(slave_address);
-  Wire.onReceive(receiveData);
+  // Wire.begin(slave_address);
+  // Wire.onReceive(receiveData);
   for(int stepper_n=0; stepper_n < n_motors; stepper_n++){
-    steppers[stepper_n]->setMaxSpeed(2000);
-    steppers[stepper_n]->setAcceleration(400);
+    steppers[stepper_n]->setMaxSpeed(1000);
+    steppers[stepper_n]->setAcceleration(200);
     }
 }
 
-void receiveData(int bytecount)
-{
-  for (int i = 0; i < bytecount; i++) {
-    data_to_echo = Wire.read();
-    Serial.println(data_to_echo);
-  }
-}
+// void receiveData(int bytecount)
+// {
+//   for (int i = 0; i < bytecount; i++) {
+//     data_to_echo = Wire.read();
+//     Serial.println(data_to_echo);
+//   }
+// }
 
 void loop() {
   
