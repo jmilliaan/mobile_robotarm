@@ -1,7 +1,9 @@
 #include <Arduino.h>
 #include "communication.h"
 #include "constants.h"
+
 using namespace communication;
+
 namespace communication{
     String read_message(){
         String data;
