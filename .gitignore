@@ -1,2 +1,9 @@
+.DS_Store
+*.cfg
+*.txt
+*.tflite
+*.weights
 
-arduino_src/4_Motor_Test.ino
+node_modules
+*.model
+*.jpg

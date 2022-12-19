@@ -1,14 +1,14 @@
 import cv2
 
 cap = cv2.VideoCapture(0)
-
-def getImg(display= False,size=[480,240]):
+def getImg(display= False,size=[128,128]):
     try:
         _, img = cap.read()
+        orig = img.copy()
         img = cv2.resize(img,(size[0],size[1]))
         if display:
             cv2.imshow('Car Camera POV',img)
-        return img
+        return img, orig
     except Exception as e:
         print(str(e))
         raise
