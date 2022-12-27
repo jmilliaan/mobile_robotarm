@@ -1,8 +1,10 @@
-import numpy as np
-import pandas as pd
+from smbus import SMBus
 
-def statistics():
-    pass
+def MoveForward(i2c_obj, i2c_addr):
+    i2c_obj.write_byte(i2c_addr, 1)
+    print("MoveForward")
+    return
 
-def calculate():
-    pass
+addr = 0x08
+bus = SMBus(1)
+MoveForward(bus, addr)

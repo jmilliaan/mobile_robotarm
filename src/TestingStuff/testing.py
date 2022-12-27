@@ -25,28 +25,35 @@ def distance_to_camera(knownWidth, focalLength, perWidth):
 #KNOWN_WIDTH = 21.5
 cap = cv2.VideoCapture(0)
 while True:
-    _, image = cap.read()
-    #image = cv2.imread('Image-Test.jpg')
-    original = image.copy()
-    image = cv2.resize(image,(128, 128))
-    #image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-    lower = np.array([0, 100, 120], dtype="uint8")
-    upper = np.array([45, 215, 255], dtype="uint8")
-    mask = cv2.inRange(image, lower, upper)
-
-    cnts = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    cnts = cnts[0] if len(cnts) == 2 else cnts[1]
-
-    c = max(cnts, key = cv2.contourArea)
-    x,y,w,h = cv2.boundingRect(c)
-    print(w)
-    cv2.rectangle(image, (x, y), (x + w, y + h), (36,255,12), 2)
-
-    cv2.imshow('mask', mask)
-    cv2.imshow('original', image)
     
-    key = cv2.waitKey(1)
-    if key==27:
-        break
+    try:
+        _, image = cap.read()
+        #image = cv2.imread('Image-Test.jpg')
+        original = image.copy()
+        image = cv2.resize(image,(128, 128))
+        #image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+        #lower = np.array([100, 30, 0], dtype="uint8")
+        #upper = np.array([255, 100, 50], dtype="uint8")
+        lower = np.array([0, 100, 120], dtype="uint8")
+        upper = np.array([100, 255, 255], dtype="uint8")
+        mask = cv2.inRange(image, lower, upper)
+
+        cnts = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        cnts = cnts[0] if len(cnts) == 2 else cnts[1]
+
+        c = max(cnts, key = cv2.contourArea)
+        x,y,w,h = cv2.boundingRect(c)
+        print(w)
+        cv2.rectangle(image, (x, y), (x + w, y + h), (36,255,12), 2)
+        cv2.imshow('original', image)
+
+        #cv2.imshow('mask', mask)  
+
+        key = cv2.waitKey(1)
+        if key==27:
+            break
+        
+    except:
+        continue
 
 cv2.destroyAllWindows()
